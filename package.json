@@ -1,0 +1,24 @@
+{
+  "name": "signature-generator",
+  "version": "1.0.0",
+  "description": "Gerador de assinaturas animadas em GIF",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "dependencies": {
+    "canvas": "^3.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^4.18.2",
+    "gifencoder": "^2.0.1",
+    "nodemailer": "^7.0.5",
+    "puppeteer": "^22.8.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "author": "",
+  "license": "ISC"
+}
