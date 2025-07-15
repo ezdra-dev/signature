@@ -82,7 +82,7 @@ function SignatureColaborator({
                             >
 
                             <table
-                              style="margin-top: 40px; background: transparent"
+                              style="margin-top: 10px; background: transparent"
                             >
                               <tbody>
                                 <tr>
@@ -246,7 +246,7 @@ function SignatureColaborator({
                         <tr>
                           <td colspan="3" style="padding-top: 20px">
                             <a
-                              href="https://www.codetwo.com/email-signatures/"
+                              href="https://www.grouplinkone.com/"
                               rel="noopener noreferrer"
                               target="_blank"
                               ><img
@@ -254,7 +254,7 @@ function SignatureColaborator({
                                 alt="Banner"
                                 width="419"
                                 style="width: 419px; height: auto; border: 0px"
-                                src="https://ci3.googleusercontent.com/meips/ADKq_NZ_jnxEJvBfLvccBTyOuGYqkAcQqbIQufgqdKLfTliCjE1NxdFMhwZ5kOreTTcnPQvUxdBPDs8eD2Ezh-mJ8-PylK7qRVojEHmtlm1EfVuePkBAYZ9YAIVinTOClrjcVjg1E0sdjVCTm-EdbIWVYFORGQ=s0-d-e1-ft#https://www.mail-signatures.com/signature-generator/img/templates/animated-banner/banner.png"
+                                src="/arte-gl-assina.gif"
                                 class="CToWUd"
                                 data-bit="iit"
                             /></a>
@@ -269,10 +269,10 @@ function SignatureColaborator({
                       "Todas as configurações";<br />4. Role a página até a área
                       das <span>Assinaturas;</span><br />5. Clique no botão
                       "Criar nova" e digite um nome para sua assinatura;<br />6.
-                      Agora basta colar os dados no espaço de edição:<br /><br /><img border="0" alt="Banner" width="419" style="width:419px;height:auto;border:0px" src="https://ci3.googleusercontent.com/meips/ADKq_NZ_jnxEJvBfLvccBTyOuGYqkAcQqbIQufgqdKLfTliCjE1NxdFMhwZ5kOreTTcnPQvUxdBPDs8eD2Ezh-mJ8-PylK7qRVojEHmtlm1EfVuePkBAYZ9YAIVinTOClrjcVjg1E0sdjVCTm-EdbIWVYFORGQ=s0-d-e1-ft#https://www.mail-signatures.com/signature-generator/img/templates/animated-banner/banner.png" class="CToWUd" data-bit="iit">
+                      Agora basta colar os dados no espaço de edição:<br /><br /><img border="0" alt="Banner" width="431" height="132" style="border:0px" src="/image.png" class="CToWUd" data-bit="iit">
                     <div>
                       7. Para finalizar, defina essa
-                      <span>assinatura</span> para os usos que você desejar:<br /><br /><img border="0" alt="Banner" width="419" style="width:419px;height:auto;border:0px" src="https://ci3.googleusercontent.com/meips/ADKq_NZ_jnxEJvBfLvccBTyOuGYqkAcQqbIQufgqdKLfTliCjE1NxdFMhwZ5kOreTTcnPQvUxdBPDs8eD2Ezh-mJ8-PylK7qRVojEHmtlm1EfVuePkBAYZ9YAIVinTOClrjcVjg1E0sdjVCTm-EdbIWVYFORGQ=s0-d-e1-ft#https://www.mail-signatures.com/signature-generator/img/templates/animated-banner/banner.png" class="CToWUd" data-bit="iit">
+                      <span>assinatura</span> para os usos que você desejar:<br /><br /><img border="0" alt="Banner" width="466" height="152" style="border:0px" src="/image-2.png" class="CToWUd" data-bit="iit">
                     </div>
                     <div><br /></div>
                     <div>
