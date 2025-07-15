@@ -51,8 +51,8 @@ app.post("/generate-gif", async (req, res) => {
 
     await SendMail({
       to: userData.email,
-      subject: "Sua assinatura animada",
-      html
+      subject: "Sua assinatura de email chegou! Veja como configurar.",
+      html,
     });
 
     res.status(201)
