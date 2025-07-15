@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assinatura GL ONE</title>
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      * {
+        font-family: "Figtree", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+        color: #fff;
+      }
+      body {
+        background: url(/banner.png) no-repeat center center;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
+        padding: 40px;
+      }
+      body::before {
+        content: "";
+        position: absolute;
+        z-index: -10;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, #201f5d 65%, #0e0d5880);
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 600;
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        font-weight: 700;
+        p {
+          color: #a5a3ec;
+        }
+        h1 {
+          position: relative;
+          width: fit-content;
+          padding-right: 45px;
+          font-size: 50px;
+        }
+
+        h1::before {
+          content: "";
+          position: absolute;
+          background-color: #0066ff;
+          z-index: -10;
+          bottom: 13px;
+          right: 0;
+          width: 20px;
+          height: 20px;
+          border-radius: 100%;
+        }
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        height: 90vh;
+        justify-content: center;
+        align-items: start;
+        gap: 20px;
+      }
+      form {
+        width: 100%;
+        max-width: 600px;
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .box-buttons {
+        margin-top: 40px;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        gap: 40px;
+        button {
+          padding: 15px 0;
+          width: 100%;
+          border-radius: 30px;
+          font-weight: 700;
+          font-size: 16px;
+          border: none;
+          display: block;
+          cursor: pointer;
+        }
+      }
+
+      .submit-button {
+        background-color: #0066ff;
+        color: #fff;
+        transition: background 0.2s, color 0.2s;
+      }
+      .submit-button:hover {
+        background-color: #0052cc;
+        color: #e0e0e0;
+      }
+
+      .clear-button {
+        background-color: #fff;
+        color: #201f5d;
+        transition: background 0.2s, color 0.2s, border 0.2s;
+      }
+      .clear-button:hover {
+        background-color: #e9e9e9;
+      }
+
+      .clear-button:disabled {
+        background-color: #e9e9e950 !important;
+        color: #888 !important;
+        cursor: not-allowed;
+        opacity: 0.7;
+        border: none;
+      }
+      .submit-button:disabled {
+        background-color: #0052cc71 !important;
+        color: #888 !important;
+        cursor: not-allowed;
+        opacity: 0.7;
+        border: none;
+      }
+
+      /* Inputs estilo GL ONE */
+      .input-glone-container {
+        position: relative;
+        margin-bottom: 18px;
+        padding-top: 20px;
+        width: 100%;
+      }
+      .input-glone {
+        background: #181846;
+        border: 1.5px solid #28286a;
+        border-radius: 16px;
+        padding: 18px;
+        color: #fff;
+        font-size: 16px;
+        outline: none;
+        transition: border 0.2s;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .input-glone:focus {
+        border: 1.5px solid #ffffff;
+      }
+      .input-glone + label {
+        position: absolute;
+        top: 39px;
+        left: 18px;
+        color: #a5a3ec;
+        font-size: 16px;
+        pointer-events: none;
+        transition: 0.2s;
+        background: transparent;
+        z-index: 10;
+      }
+      .input-glone:focus + label,
+      .input-glone:not(:placeholder-shown) + label {
+        top: -4px;
+        left: 0px;
+        font-size: 13px;
+        color: #ffffff;
+        background: transparent;
+        font-weight: 700;
+        padding: 0 4px;
+      }
+      .hidden {
+        display: none;
+      }
+      #buttonLoading {
+        align-items: center;
+        gap: 16px;
+        justify-content: center;
+      }
+      #buttonLoading .fa-spinner {
+        font-size: 1.6em;
+      }
+    </style>
+    <style>
+      /* Responsividade para notebook e telas menores */
+      @media (max-width: 1400px) {
+        body {
+          padding: 28px;
+        }
+        header {
+          gap: 25px;
+          font-weight: 600;
+          font-size: 14px;
+          img {
+            width: 40px;
+          }
+        }
+        .content {
+          margin-top: 70px;
+          p {
+            font-size: 12px;
+          }
+          h1 {
+            font-size: 30px;
+          }
+
+          h1::before {
+            bottom: 10px;
+            width: 15px;
+            height: 15px;
+            right: 5px;
+          }
+        }
+        form {
+          margin-top: 10px;
+        }
+        .box-buttons {
+          margin-top: 10px;
+        }
+        .content h1 {
+          font-size: 36px;
+        }
+        #signatureForm {
+          transform: scale(0.75);
+          transform-origin: top left;
+          margin-top: 20px;
+        }
+      }
+      @media (max-width: 600px) {
+        .content h1 {
+          font-size: 18px;
+        }
+        form {
+          width: max-content;
+        }
+        body {
+          padding: 18px;
+        }
+
+        #signatureForm {
+          transform: scale(0.65);
+          transform-origin: left;
+          margin-top: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="/logo.svg" alt="logo" />
+      <p>GROUP LINK ONE</p>
+    </header>
+    <main>
+      <div class="content">
+        <p>Gere sua assinatura de e-mail</p>
+        <h1>Assinatura profissional GL ONE</h1>
+      </div>
+      <form class="form" id="signatureForm">
+        <div class="input-glone-container">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="input-glone"
+            placeholder=" "
+            required
+          />
+          <label for="name">Nome</label>
+        </div>
+        <div class="input-glone-container">
+          <input
+            type="text"
+            id="position"
+            name="position"
+            class="input-glone"
+            placeholder=" "
+            required
+          />
+          <label for="position">Cargo</label>
+        </div>
+        <div style="display: flex; gap: 18px">
+          <div class="input-glone-container">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="input-glone"
+              placeholder=" "
+              required
+            />
+            <label for="email">Email</label>
+          </div>
+          <div class="input-glone-container">
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="input-glone"
+              placeholder=" "
+              required
+            />
+            <label for="phone">Telefone</label>
+          </div>
+        </div>
+        <div class="box-buttons">
+          <button type="reset" class="clear-button">Limpar</button>
+          <button type="submit" class="submit-button">
+            <span id="buttonText"> Criar </span>
+            <span id="buttonLoading" class="hidden">
+              <i class="fas fa-spinner fa-spin"></i> Gerando
+            </span>
+          </button>
+        </div>
+      </form>
+    </main>
+  </body>
+  <script>
+    const form = document.getElementById("signatureForm");
+    const generateBtn = document.querySelector(".submit-button");
+    const clearBtn = document.querySelector(".clear-button");
+    const buttonText = document.getElementById("buttonText");
+    const buttonLoading = document.getElementById("buttonLoading");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+
+      buttonText.classList.add("hidden");
+      buttonLoading.classList.remove("hidden");
+      buttonLoading.style.display = "flex";
+      generateBtn.disabled = true;
+      clearBtn.disabled = true;
+
+      try {
+        const response = await fetch("/generate-gif", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+          throw new Error("Erro ao gerar assinatura");
+        }
+
+        const blob = await response.blob();
+        const gifUrl = URL.createObjectURL(blob);
+
+        // Baixar automaticamente
+        const a = document.createElement("a");
+        a.href = gifUrl;
+        a.download = "assinatura-animada.gif";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      } catch (error) {
+        alert("Erro ao gerar assinatura. Tente novamente.");
+      } finally {
+        buttonText.classList.remove("hidden");
+        buttonLoading.classList.add("hidden");
+        buttonLoading.style.display = "";
+        generateBtn.disabled = false;
+        clearBtn.disabled = false;
+      }
+    });
+
+    clearBtn.addEventListener("click", () => {
+      buttonText.classList.remove("hidden");
+      buttonLoading.classList.add("hidden");
+      buttonLoading.style.display = "";
+      generateBtn.disabled = false;
+      clearBtn.disabled = false;
+    });
+
+    const phoneInput = document.getElementById("phone");
+
+    phoneInput.addEventListener("input", function (e) {
+      let value = e.target.value.replace(/\D/g, "");
+
+      // Remove o +55 se o usuário tentar digitar manualmente
+      if (value.startsWith("55")) value = value.slice(2);
+
+      // Aplica a máscara: +55 (XX) XXXXX-XXXX ou +55 (XX) XXXX-XXXX
+      if (value.length > 11) value = value.slice(0, 11);
+
+      let masked = "+55 ";
+
+      if (value.length > 0) {
+        masked += "(" + value.substring(0, 2);
+      }
+      if (value.length >= 3) {
+        masked +=
+          ") " + value.substring(2, value.length >= 7 ? 7 : value.length);
+      }
+      if (value.length >= 7) {
+        masked += "-" + value.substring(7, 11);
+      }
+
+      e.target.value = masked.trim();
+    });
+  </script>
+</html>
