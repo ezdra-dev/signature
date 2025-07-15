@@ -55,7 +55,7 @@ app.post("/generate-gif", async (req, res) => {
       html,
     });
 
-    res.status(201)
+    return res.status(201).json({ message: "Assinatura enviada com sucesso!" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Erro interno do servidor" });

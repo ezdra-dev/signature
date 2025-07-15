@@ -358,16 +358,7 @@
           throw new Error("Erro ao gerar assinatura");
         }
 
-        const blob = await response.blob();
-        const gifUrl = URL.createObjectURL(blob);
-
-        // Baixar automaticamente
-        const a = document.createElement("a");
-        a.href = gifUrl;
-        a.download = "assinatura-animada.gif";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+        showToast('Assinatura enviada com sucesso!');
       } catch (error) {
         alert("Erro ao gerar assinatura. Tente novamente.");
       } finally {
@@ -392,10 +383,8 @@
     phoneInput.addEventListener("input", function (e) {
       let value = e.target.value.replace(/\D/g, "");
 
-      // Remove o +55 se o usuário tentar digitar manualmente
       if (value.startsWith("55")) value = value.slice(2);
 
-      // Aplica a máscara: +55 (XX) XXXXX-XXXX ou +55 (XX) XXXX-XXXX
       if (value.length > 11) value = value.slice(0, 11);
 
       let masked = "+55 ";
@@ -413,5 +402,26 @@
 
       e.target.value = masked.trim();
     });
+
+    function showToast(message) {
+      let toast = document.createElement('div');
+      toast.textContent = message;
+      toast.style.position = 'fixed';
+      toast.style.bottom = '40px';
+      toast.style.left = '50%';
+      toast.style.transform = 'translateX(-50%)';
+      toast.style.background = '#201f5d';
+      toast.style.color = '#fff';
+      toast.style.padding = '16px 32px';
+      toast.style.borderRadius = '8px';
+      toast.style.fontWeight = 'bold';
+      toast.style.fontSize = '18px';
+      toast.style.boxShadow = '0 2px 12px #0002';
+      toast.style.zIndex = '9999';
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        toast.remove();
+      }, 3500);
+    }
   </script>
 </html>
