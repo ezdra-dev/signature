@@ -62,6 +62,10 @@ app.post("/generate-gif", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/page.html"));
+});
+
 app.get("/health", (req, res) => {
   res.json({ status: "OK", timestamp: new Date().toISOString() });
 });
