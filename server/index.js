@@ -62,8 +62,8 @@ app.post("/generate-gif", async (req, res) => {
   }
 });
 
-app.get("/teste", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/page.html"));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/aadadadad.html"));
 });
 
 app.get("/health", (req, res) => {
