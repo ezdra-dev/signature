@@ -82,7 +82,7 @@ function SignatureColaborator({
                             >
 
                             <table
-                              style="margin-top: 15px; background: transparent"
+                              style="margin-top: 20px; background: transparent"
                             >
                               <tbody>
                                 <tr>
