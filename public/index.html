@@ -18,12 +18,15 @@
         overflow: hidden;
         color: #fff;
       }
+      html {
+        font-size: 16px;
+      }
       body {
         background: url(/banner.png) no-repeat center center;
         background-size: cover;
         width: 100vw;
         height: 100vh;
-        padding: 40px;
+        padding: 1.25rem;
       }
       body::before {
         content: "";
@@ -38,9 +41,9 @@
       header {
         display: flex;
         align-items: center;
-        gap: 50px;
+        gap: 3.125rem;
         color: #fff;
-        font-size: 18px;
+        font-size: 0.875rem;
         font-weight: 600;
       }
       .content {
@@ -49,12 +52,13 @@
         font-weight: 700;
         p {
           color: #a5a3ec;
+          font-size: 0.875rem;
         }
         h1 {
           position: relative;
           width: fit-content;
-          padding-right: 45px;
-          font-size: 50px;
+          padding-right: 2.8125rem;
+          font-size: 1.875rem;
         }
 
         h1::before {
@@ -62,10 +66,10 @@
           position: absolute;
           background-color: #0066ff;
           z-index: -10;
-          bottom: 13px;
+          bottom: 0.8125rem;
           right: 0;
-          width: 20px;
-          height: 20px;
+          width: 1.25rem;
+          height: 1.25rem;
           border-radius: 100%;
         }
       }
@@ -74,30 +78,194 @@
         display: flex;
         flex-direction: column;
         height: 90vh;
-        justify-content: center;
+        justify-content: space-around;
         align-items: start;
-        gap: 20px;
+        max-height: 600px;
+        margin-top: 5vh;
       }
       form {
         width: 100%;
-        max-width: 600px;
-        margin-top: 40px;
+        max-width: 37.5rem;
+        padding: 2.5rem 0;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 2.1875rem;
       }
-      .box-buttons {
-        margin-top: 40px;
-        display: flex;
+
+      .input-glone-container {
+        position: relative;
+        overflow: visible;
         width: 100%;
-        justify-content: space-between;
-        gap: 40px;
+
+        p {
+          color: #a5a3ec;
+          font-size: 0.875rem;
+          font-weight: 800;
+        }
+      }
+      .input-glone {
+        background: #181846;
+        border: 0.09375rem solid #28286a;
+        border-radius: 0.75rem;
+        padding: 0.75rem 1.125rem;
+        color: #fff;
+        font-size: 0.75rem;
+        outline: none;
+        transition: border 0.2s;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .input-glone:focus {
+        border: 0.09375rem solid #0066ff;
+      }
+      .input-glone + label {
+        position: absolute;
+        top: 30%;
+        transform: translateX(-30%);
+        left: 1.5625rem;
+        color: #a5a3ec;
+        font-size: 0.75rem;
+        pointer-events: none;
+        transition: 0.2s;
+        background: transparent;
+        z-index: 10;
+      }
+      .input-glone:focus + label,
+      .input-glone:not(:placeholder-shown) + label {
+        top: -1.375rem;
+        left: 0.9375rem;
+        color: #ffffff;
+        background: transparent;
+        font-weight: 600;
+        padding: 0 0.25rem;
+      }
+      .hidden {
+        display: none;
+      }
+      .toggle-button-cover {
+        display: table-cell;
+        position: relative;
+        width: 100px;
+        height: 40px;
+        box-sizing: border-box;
+      }
+
+      .button-cover {
+        height: 100px;
+        margin: 20px;
+        background-color: #fff;
+        box-shadow: 0 10px 20px -8px #c5d6d6;
+        border-radius: 4px;
+      }
+
+      .button-cover:before {
+        counter-increment: button-counter;
+        content: counter(button-counter);
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        color: #d7e3e3;
+        font-size: 12px;
+        line-height: 1;
+        padding: 5px;
+      }
+
+      .button-cover,
+      .knobs,
+      .layer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      .button {
+        position: relative;
+        top: 50%;
+        width: 74px;
+        height: 36px;
+        margin: -20px auto 0 auto;
+        overflow: hidden;
+      }
+
+      .checkbox {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 3;
+      }
+
+      .knobs {
+        z-index: 2;
+      }
+
+      .layer {
+        width: 100%;
+        background-color: #181846;
+        transition: 0.3s ease all;
+        border: 1px solid #28286a;
+        z-index: 1;
+      }
+
+      .button.r,
+      .button.r .layer {
+        border-radius: 100px;
+      }
+
+      #button-3 .knobs:before {
+        content: "Não";
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 20px;
+        height: 10px;
+        color: #181846;
+        font-size: 10px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1;
+        padding: 9px 4px;
+        background-color: #fcebeb;
+        border-radius: 50%;
+        transition: 0.3s ease all,
+          left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+      }
+
+      #button-3 .checkbox:active + .knobs:before {
+        width: 46px;
+        border-radius: 100px;
+      }
+
+      #button-3 .checkbox:checked:active + .knobs:before {
+        margin-left: -26px;
+      }
+
+      #button-3 .checkbox:checked + .knobs:before {
+        content: "Sim";
+        left: 42px;
+        background-color: #fcebeb;
+        color: #181846;
+      }
+
+      #button-3 .checkbox:checked ~ .layer {
+        background-color: #181846;
+      }
+
+      .box-buttons {
+        display: flex;
+        gap: 0.625rem;
+        justify-content: end;
         button {
-          padding: 15px 0;
-          width: 100%;
-          border-radius: 30px;
+          padding: 0.625rem 0;
+          border-radius: 0.625rem;
           font-weight: 700;
-          font-size: 16px;
+          font-size: 0.8125rem;
+          width: 6.25rem;
           border: none;
           display: block;
           cursor: pointer;
@@ -120,7 +288,7 @@
         transition: background 0.2s, color 0.2s, border 0.2s;
       }
       .clear-button:hover {
-        background-color: #e9e9e9;
+        background-color: #cfcfcf;
       }
 
       .clear-button:disabled {
@@ -137,135 +305,41 @@
         opacity: 0.7;
         border: none;
       }
-
-      /* Inputs estilo GL ONE */
-      .input-glone-container {
-        position: relative;
-        margin-bottom: 18px;
-        padding-top: 20px;
-        width: 100%;
-      }
-      .input-glone {
-        background: #181846;
-        border: 1.5px solid #28286a;
-        border-radius: 16px;
-        padding: 18px;
-        color: #fff;
-        font-size: 16px;
-        outline: none;
-        transition: border 0.2s;
-        width: 100%;
-        box-sizing: border-box;
-      }
-      .input-glone:focus {
-        border: 1.5px solid #ffffff;
-      }
-      .input-glone + label {
-        position: absolute;
-        top: 39px;
-        left: 18px;
-        color: #a5a3ec;
-        font-size: 16px;
-        pointer-events: none;
-        transition: 0.2s;
-        background: transparent;
-        z-index: 10;
-      }
-      .input-glone:focus + label,
-      .input-glone:not(:placeholder-shown) + label {
-        top: -4px;
-        left: 0px;
-        font-size: 13px;
-        color: #ffffff;
-        background: transparent;
-        font-weight: 700;
-        padding: 0 4px;
-      }
-      .hidden {
-        display: none;
-      }
       #buttonLoading {
         align-items: center;
-        gap: 16px;
+        gap: 1rem;
         justify-content: center;
       }
       #buttonLoading .fa-spinner {
-        font-size: 1.6em;
-      }
-    </style>
-    <style>
-      /* Responsividade para notebook e telas menores */
-      @media (max-width: 1400px) {
-        body {
-          padding: 28px;
-        }
-        header {
-          gap: 25px;
-          font-weight: 600;
-          font-size: 14px;
-          img {
-            width: 40px;
-          }
-        }
-        .content {
-          margin-top: 70px;
-          p {
-            font-size: 12px;
-          }
-          h1 {
-            font-size: 30px;
-          }
-
-          h1::before {
-            bottom: 10px;
-            width: 15px;
-            height: 15px;
-            right: 5px;
-          }
-        }
-        form {
-          margin-top: 10px;
-        }
-        .box-buttons {
-          margin-top: 10px;
-        }
-        .content h1 {
-          font-size: 36px;
-        }
-        #signatureForm {
-          transform: scale(0.75);
-          transform-origin: top left;
-          margin-top: 20px;
-        }
-      }
-      @media (max-width: 600px) {
-        .content h1 {
-          font-size: 18px;
-        }
-        form {
-          width: max-content;
-        }
-        body {
-          padding: 18px;
-        }
-
-        #signatureForm {
-          transform: scale(0.65);
-          transform-origin: left;
-          margin-top: 20px;
-        }
+        font-size: 1em;
       }
     </style>
   </head>
   <body>
     <header>
-      <img src="/logo.svg" alt="logo" />
+      <img src="/logo.svg" alt="logo" style="width: 40px" />
       <p>GROUP LINK ONE</p>
     </header>
     <main>
       <div class="content">
         <p>Gere sua assinatura de e-mail</p>
         <h1>Assinatura profissional GL ONE</h1>
+        <div class="input-glone-container" style="display: flex; align-items: center; gap: 0.5rem; height: 53px; margin-top: 15px;">
+          <label for="addCardToggle" style="color: #a5a3ec; font-size: 0.875rem; font-weight: 800; display: block;">Adicionar Cartão de Visita?</label>
+          <div class="toggle-button-cover">
+            <div id="button-3" class="button r">
+              <input class="checkbox" type="checkbox" id="addCardToggle" name="addCard" />
+              <div class="knobs"></div>
+              <div class="layer"></div>
+            </div>
+          </div>
+          <div class="hidden" id="cardUploadContainer" style="display: none; align-items: center; gap: 0.75rem;">
+            <label for="cardImage" style="display: flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: 50%; background: #181846; border: 1px solid #28286a; cursor: pointer; box-shadow: 0 2px 8px #0002; transition: border 0.2s; margin-bottom: 5px;">
+              <i class="fa fa-paperclip" style="font-size: 1.25rem; color: #a5a3ec;"></i>
+              <input type="file" id="cardImage" name="cardImage" accept="image/*" style="display: none;" />
+            </label>
+          </div>
+        </div>
       </div>
       <form class="form" id="signatureForm">
         <div class="input-glone-container">
@@ -290,7 +364,7 @@
           />
           <label for="position">Cargo</label>
         </div>
-        <div style="display: flex; gap: 18px">
+        <div style="display: flex; gap: 18px; overflow: visible; width: 100%">
           <div class="input-glone-container">
             <input
               type="email"
@@ -332,12 +406,35 @@
     const clearBtn = document.querySelector(".clear-button");
     const buttonText = document.getElementById("buttonText");
     const buttonLoading = document.getElementById("buttonLoading");
+    const addCardToggle = document.getElementById("addCardToggle");
+    const cardUploadContainer = document.getElementById("cardUploadContainer");
+    const cardImageInput = document.getElementById("cardImage");
+    const cardImageLabel = cardImageInput.parentElement;
+    const paperclipIcon = cardImageLabel.querySelector(".fa-paperclip");
+
+    cardUploadContainer.style.display = "none";
+    addCardToggle.checked = false;
+
+    cardImageInput.addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (ev) {
+          cardImageLabel.style.background = `url('${ev.target.result}') center center/cover no-repeat`;
+          paperclipIcon.style.display = "none";
+        };
+        reader.readAsDataURL(file);
+      } else {
+        cardImageLabel.style.background = "#181846";
+        cardImageLabel.style.border = "1px solid #28286a";
+        paperclipIcon.style.display = "inline-block";
+      }
+    });
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const formData = new FormData(form);
-      const data = Object.fromEntries(formData);
 
       buttonText.classList.add("hidden");
       buttonLoading.classList.remove("hidden");
@@ -348,17 +445,14 @@
       try {
         const response = await fetch("/generate-gif", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
+          body: formData,
         });
 
         if (!response.ok) {
           throw new Error("Erro ao gerar assinatura");
         }
 
-        showToast('Assinatura enviada com sucesso!');
+        showToast("Assinatura enviada com sucesso!");
       } catch (error) {
         alert("Erro ao gerar assinatura. Tente novamente.");
       } finally {
@@ -403,24 +497,42 @@
       e.target.value = masked.trim();
     });
 
+    addCardToggle.addEventListener("change", function () {
+      if (this.checked) {
+        cardUploadContainer.style.display = "flex";
+      } else {
+        cardUploadContainer.style.display = "none";
+      }
+    });
+
     function showToast(message) {
-      let toast = document.createElement('div');
+      let toast = document.createElement("div");
       toast.textContent = message;
-      toast.style.position = 'fixed';
-      toast.style.bottom = '40px';
-      toast.style.left = '50%';
-      toast.style.transform = 'translateX(-50%)';
-      toast.style.background = '#201f5d';
-      toast.style.color = '#fff';
-      toast.style.padding = '16px 32px';
-      toast.style.borderRadius = '8px';
-      toast.style.fontWeight = 'bold';
-      toast.style.fontSize = '18px';
-      toast.style.boxShadow = '0 2px 12px #0002';
-      toast.style.zIndex = '9999';
+      toast.style.position = "fixed";
+      toast.style.top = "32px";
+      toast.style.right = "32px";
+      toast.style.left = "unset";
+      toast.style.transform = "translateY(-40px) scale(0.95)";
+      toast.style.background = "#181846";
+      toast.style.color = "#fff";
+      toast.style.padding = "12px 24px";
+      toast.style.borderRadius = "0.75rem";
+      toast.style.fontWeight = "bold";
+      toast.style.fontSize = "0.95rem";
+      toast.style.boxShadow = "0 2px 12px #0002";
+      toast.style.zIndex = "9999";
+      toast.style.opacity = "0";
+      toast.style.border = "0.09375rem solid #28286a";
+      toast.style.transition = "opacity 0.25s, transform 0.4s cubic-bezier(.4,1.3,.5,1)";
       document.body.appendChild(toast);
       setTimeout(() => {
-        toast.remove();
+        toast.style.opacity = "1";
+        toast.style.transform = "translateY(0) scale(1)";
+      }, 10);
+      setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateY(-40px) scale(0.95)";
+        setTimeout(() => toast.remove(), 400);
       }, 3500);
     }
   </script>

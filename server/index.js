@@ -3,11 +3,13 @@ const nodemailer = require("nodemailer");
 const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
+const multer = require("multer");
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const upload = multer();
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
@@ -32,9 +34,17 @@ async function SendMail({ to, subject, html }) {
   });
 }
 
-app.post("/generate-gif", async (req, res) => {
+app.post("/generate-gif", upload.single("cardImage"), async (req, res) => {
   try {
     const userData = req.body;
+    console.log('Recebido do frontend:', userData);
+    if (req.file) {
+      console.log('Arquivo recebido:', req.file.originalname, req.file.mimetype, req.file.size, 'bytes');
+    }
+
+    if (userData.addCard) {
+      handleBusinessCard(userData, req.file);
+    }
 
     const requiredFields = ["name", "position", "email", "phone"];
     for (const field of requiredFields) {
@@ -68,3 +78,10 @@ app.get("/health", (req, res) => {
 });
 
 app.listen(PORT);
+
+function handleBusinessCard(userData, file) {
+  console.log('Função de cartão de visita chamada! Dados:', userData);
+  if (file) {
+    console.log('Arquivo do cartão de visita:', file.originalname, file.mimetype, file.size, 'bytes');
+  }
+}
